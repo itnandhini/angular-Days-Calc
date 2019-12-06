@@ -1,0 +1,34 @@
+<form [formGroup]="dayForm" (ngSubmit)="submit(dayForm.value)">
+<input type="radio" name="one" (click)="clickMe('All')"/> All
+<input type="radio" name="one" (click)="clickMe('Five')"/>Five
+<input type="radio" name="one" (click)="clickMe('Two')"/>Two
+<input type="radio" name="one" (click)="clickMe('Any')"/>Any
+
+<table>
+	<tr *ngFor="let user of users">
+		<td>
+			<button [disabled]="stopEvent" [ngClass]="{'btn btn-danger':!user.active, 'btn btn-success':user.active}" (click)="click(user,user.id)"> {{user.active ? user.name:user.name}}
+    </button>
+		</td>
+	</tr>
+</table>
+</form>
+<!-- <form [formGroup]="userForm" (ngSubmit)="submit(userForm.value)">
+	<hr>
+	<div formGroupName="type">
+		<div formArrayName="options">
+			<div *ngFor="let child of userForm.get('type.options').controls; let i = index">
+				<div [formGroupName]="i">
+					<label>{{i+1}}. Label: </label>
+            <input formControlName="label" /><br>
+            <label>{{i+1}}. Value: </label>
+            <input formControlName="value" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+</form> -->
+  <br>
+
+    <pre>{{dayForm.value | json }}</pre>
